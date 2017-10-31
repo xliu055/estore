@@ -6,7 +6,7 @@ export class SessionService {
 
   constructor() { }
 
-  sessionContext: { [sessionKey: string]: any }
+  sessionContext: { [sessionKey: string]: any } = {};
 
   get userLoginState(): boolean {
     return this.sessionContext["UserLoginState"] as boolean;

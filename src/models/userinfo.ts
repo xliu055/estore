@@ -5,7 +5,6 @@ export class UserCredentials {
 }
 
 export class UserInfo {
-    id: number;
     username: string;
-    nickname: string;
+    token: string;
 }

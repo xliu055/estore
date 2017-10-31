@@ -3,6 +3,10 @@ import { NgModule } from '@angular/core';
 import { FormsModule }   from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 
+import { UserService } from './user.service';
+import { SessionService } from './session.service';
+import { ProductService } from './product.service';
+
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { MenuComponent } from './menu/menu.component';
@@ -35,7 +39,7 @@ const appRoutes: Routes = [
       appRoutes
     )
   ],
-  providers: [],
+  providers: [UserService, SessionService, ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

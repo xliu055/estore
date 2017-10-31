@@ -12,11 +12,10 @@ export class UserService {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         let userInfo = new UserInfo();
-        userInfo.id = 1001;
         userInfo.username = username;
-        userInfo.nickname = "Lucy Liu";
+        userInfo.token = "4D2A355F-78FE-4259-86A-9A3CDB6E1708";
 
-        if (username === "admin" && password === "admin")
+        if (username === "testuser" && password === "888888")
           resolve(userInfo);
         else
           reject("Username or password is incorrect");
