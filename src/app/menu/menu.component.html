@@ -1,28 +1,33 @@
 <!-- Brand and toggle get grouped for better mobile display -->
 <div class="navbar-header">
-  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-    <span class="sr-only">Toggle navigation</span>
-    <span class="icon-bar"></span>
-    <span class="icon-bar"></span>
-    <span class="icon-bar"></span>
-  </button>
-  <a class="navbar-brand visible-xs-block" href="#">Apple</a>
+  <a class="navbar-brand" href="#">OlsonKart</a>
 </div>
 
+<div class="dropdown visible-xs">
+  <button class="btn btn-default dropdown-toggle" type="button" id="menu-dropdown" data-toggle="dropdown" aria-haspopup="true"
+    aria-expanded="true">
+        Home
+        <span class="caret"></span>
+      </button>
+  <ul class="dropdown-menu" aria-labelledby="menu-dropdown">
+    <li *ngFor="let menuItem of menuItems"><a [routerLink]="menuItem.url">{{menuItem.displayName}}</a></li>
+  </ul>
+</div>
+
+<div class="navbar-buttons">
+  <a href="/login" class="btn btn-sm btn-primary">Login</a>
+  <a href="/login" class="btn btn-sm btn-primary">Sign up</a>
+  <a href="/login" class="btn btn-sm btn-primary">3 Items - $300</a>
+</div>
+
+
+
 <!-- Collect the nav links, forms, and other content for toggling -->
-<div class="collapse navbar-collapse navbar-ex1-collapse">
+<div class="navbar-collapse hidden-xs">
   <ul class="nav navbar-nav">
-    <li class="active"><a href="/products/apple">Apple</a></li>
-    <li><a href="/products/samsung">Samsung</a></li>
-    <li><a href="/products/huawei">Huawei</a></li>
+    <!-- <li class="active"><a href="/products/apple">Home</a></li> -->
+    <li *ngFor="let menuItem of menuItems" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+      <a [routerLink]="menuItem.url">{{menuItem.displayName}}</a>
+    </li>
   </ul>
-  <form class="navbar-form navbar-left" role="search">
-    <div class="form-group">
-      <input type="text" class="form-control" placeholder="Search">
-    </div>
-    <button type="submit" class="btn btn-default">Submit</button>
-  </form>
-  <ul class="nav navbar-nav navbar-right">
-    <li><a href="/login">Login</a></li>
-  </ul>
-</div><!-- /.navbar-collapse -->
+</div>
