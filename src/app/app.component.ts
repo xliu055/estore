@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +8,13 @@ import { Component } from '@angular/core';
     './app.component.scss'
   ]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+
+  constructor(private route: ActivatedRoute) {
+    
+  }
+
+  ngOnInit(): void {
+  }
   title = 'app';
 }

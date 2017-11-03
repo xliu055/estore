@@ -3,27 +3,24 @@
   <a class="navbar-brand" href="#">OlsonKart</a>
 </div>
 
-<div class="dropdown visible-xs">
+<div class="dropdown visible-xs visible-sm col-sm-6">
   <button class="btn btn-default dropdown-toggle" type="button" id="menu-dropdown" data-toggle="dropdown" aria-haspopup="true"
     aria-expanded="true">
-        Home
-        <span class="caret"></span>
-      </button>
+      {{ activeItem }} <span class="caret"></span>
+  </button>
   <ul class="dropdown-menu" aria-labelledby="menu-dropdown">
     <li *ngFor="let menuItem of menuItems"><a [routerLink]="menuItem.url">{{menuItem.displayName}}</a></li>
   </ul>
 </div>
 
 <div class="navbar-buttons">
-  <a href="/login" class="btn btn-sm btn-primary">Login</a>
-  <a href="/login" class="btn btn-sm btn-primary">Sign up</a>
-  <a href="/login" class="btn btn-sm btn-primary">3 Items - $300</a>
+  <a routerLink="/login" class="btn btn-sm btn-primary">Login</a>
+  <a routerLink="/login" class="btn btn-sm btn-primary">Sign up</a>
+  <a routerLink="/login" class="btn btn-sm btn-primary">3 Items - $300</a>
 </div>
 
-
-
 <!-- Collect the nav links, forms, and other content for toggling -->
-<div class="navbar-collapse hidden-xs">
+<div class="navbar-collapse hidden-xs hidden-sm">
   <ul class="nav navbar-nav">
     <!-- <li class="active"><a href="/products/apple">Home</a></li> -->
     <li *ngFor="let menuItem of menuItems" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
