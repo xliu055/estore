@@ -1,41 +1,51 @@
-<div class="row">
+<div class="page-login container">
+  <div class="login-center row justify-content-start">
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+      <h3>
+        Login to Access Amazing Benefits
+        <span class="color">!!!</span>
+      </h3>
+      <img src="../../assets/back1.jpg" class="img-thumbnail img-responsive">
+      <p>
+        Duis leo risus, vehicula luctus nunc. Quiue rhoncus, a sodales enim arcu quis turpis. Duis leo risus, condimentum ut posuere
+        ac, vehicula luctus nunc. Quisque rhoncus, a sodales enim arcu quis turpis.
+      </p>
+    </div>
 
-  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+      <div class="login-input">
+        <form class="form-horizontal" #f="ngForm" (ngSubmit)="doLogin(f)" novalidate>
+          <legend>Login</legend>
+          <div class="form-group">
+            <label for="username" class="form-label col-sm-3">User name</label>
+            <div class="col-sm-9">
+              <input type="text" ngModel class="form-control" id="username" name="username" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="password" class="form-label col-sm-3">Password</label>
+            <div class="col-sm-9">
+              <input ngModel type="password" class="form-control" id="password" name="password" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label col-sm-3"></label>
+            <div class="checkbox col-sm-9">
+              <label>
+                  <input type="checkbox" ngModel name="rememberMe" />
+                  Remember me?
+                </label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label col-sm-3"></label>
+            <div class="col-sm-9">
+              <button class="btn btn-primary" type="submit">Sign In</button>
+              <button class="btn btn-default" type="reset">Reset</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
-
-
-  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-
-    <form #f="ngForm" (ngSubmit)="doLogin(f)" novalidate>
-      <legend>Please login</legend>
-
-      <div class="form-group">
-        <label for="username">User name</label>
-        <input type="text" ngModel class="form-control" id="username" name="username"  />
-      </div>
-
-
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input ngModel type="password" class="form-control" id="password" name="password" />
-      </div>
-
-      <div class="form-group">
-
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" ngModel name="rememberMe" />
-            Remember me?
-          </label>
-        </div>
-
-      </div>
-
-      <button class="btn btn-primary" type="submit">Login</button>
-    </form>
-
-  </div>
-
-
 </div>

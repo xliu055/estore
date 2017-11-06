@@ -1,0 +1,35 @@
+.page-products{
+    text-align: center;
+    .products-center{
+        h3{
+            font-family: 'Open Sans Condensed', sans-serif;
+            font-size: 40px;
+        }
+
+        p{
+            max-width: 800px;
+            margin: 20px auto !important;
+            padding: 15px;
+            font-size: 17px;
+            line-height: 28px;
+            font-weight: 400;
+            font-style: italic;
+            color: #999;
+            background: #f8f8f8;
+            border-top: 3px solid #eee;
+            border-bottom: 3px solid #eee;
+        }
+
+        .products-img{
+            max-height: 350px;
+            height: 350px;
+            img{
+                height: 100%;
+                width:100%;
+            }
+
+        }
+       
+    }
+  
+}
