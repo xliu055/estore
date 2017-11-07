@@ -1,9 +1,9 @@
 .page-products{
-    text-align: center;
     .products-center{
         h3{
             font-family: 'Open Sans Condensed', sans-serif;
             font-size: 40px;
+            text-align: center;
         }
 
         p{
@@ -28,6 +28,13 @@
                 width:100%;
             }
 
+        }
+
+        .products-bor{
+            border-top: 1px dashed #ccc;
+            border-bottom: 1px dashed #ccc;
+            margin: 20px 0px;
+            height: 5px;
         }
        
     }
