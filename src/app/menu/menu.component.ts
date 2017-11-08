@@ -15,6 +15,7 @@ export class MenuComponent implements OnInit {
 
   menuItems: Array<MenuItem>;
   activeItem: string = "Menu";
+  loginStatus:string="Login";
 
   constructor(private route: Router) {
     this.menuItems = [

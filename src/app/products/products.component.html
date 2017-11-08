@@ -16,9 +16,29 @@
         </div>
         <div class="products-list">
           <div class="row">
-
+            <div *ngFor="let product of products;" class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+              <div class="item">
+                <div class="item-img">
+                  <img src="{{product.imgurl}}" class="img-responsive">
+                </div>
+                <div class="item-name">
+                  <span>{{product.name}}</span>
+                </div>
+                <div class="item-des">
+                  {{product.description}}
+                </div>
+                <hr>
+                <div class="item-price">
+                  <div class="item-priceshow">
+                    {{"$"+product.price}}
+                  </div>
+                  <div class="item-shoppingcart">
+                    <a href="" class="btn btn-danger btn-sm">Add to cart</a>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-
         </div>
       </div>
     </div>

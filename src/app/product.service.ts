@@ -2,14 +2,14 @@ import { Injectable } from '@angular/core';
 import Promise from 'bluebird';
 import { UserInfo } from '../models/userinfo';
 import { Http, Headers, RequestOptions } from '@angular/http'
-import { ProductList } from '../models/productlist';
+import { Product } from '../models/productlist';
 
 @Injectable()
 export class ProductService {
 
   constructor(private http: Http) { }
 
-  retrieveProduct(userInfo: UserInfo): Promise<ProductList> {
+  retrieveProduct(userInfo: UserInfo): Promise<Array<Product>> {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     headers.append('RequestVerificationToken', userInfo.token);
@@ -21,13 +21,10 @@ export class ProductService {
       .get("https://pwcfrontendtest.azurewebsites.net/getlist", options)
       .subscribe(
        data => {
-        debugger;
-        let products=new ProductList();
+        let products=new Array<Product>();
         products=data.json().res;
         resolve(products);
       });
     })
-
   }
-
 }

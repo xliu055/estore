@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SessionService } from '../session.service';
 import { ProductService } from '../product.service';
-import { ProductList } from '../../models/productlist';
+import { Product} from '../../models/productlist';
 
 
 @Component({
@@ -11,14 +11,23 @@ import { ProductList } from '../../models/productlist';
 })
 export class ProductsComponent implements OnInit {
 
-  products:ProductList;
+  products:Array<Product>;
 
   constructor(private sessionSVC: SessionService, private productservice: ProductService) { }
 
   ngOnInit() {
-    if (this.sessionSVC.userLoginState = true) {
-      this.products=this.productservice.retrieveProduct(this.sessionSVC.loginUserInfo);
+    debugger;
+    if (this.sessionSVC.userLoginState) {  
+
+      this.productservice.retrieveProduct(this.sessionSVC.loginUserInfo)
+      .then((products: Array<Product>) => {
+
+        this.products=products;
+
+      }).catch((errorMsg: string) => {
+        //TODO: show error message popup
+        alert(errorMsg);
+      });
     }
   }
-
 }
