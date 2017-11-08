@@ -6,5 +6,6 @@ export class UserCredentials {
 
 export class UserInfo {
     username: string;
+    status :string;
     token: string;
 }
