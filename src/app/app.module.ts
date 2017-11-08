@@ -14,6 +14,7 @@ import { LoginComponent } from './login/login.component';
 import { MenuComponent } from './menu/menu.component';
 import { ProductsComponent } from './products/products.component';
 import { FooterComponent } from './footer/footer.component';
+import { PricePipe } from './price.pipe';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -33,7 +34,8 @@ const appRoutes: Routes = [
     LoginComponent,
     MenuComponent,
     ProductsComponent,
-    FooterComponent
+    FooterComponent,
+    PricePipe
   ],
   imports: [
     BrowserModule,
