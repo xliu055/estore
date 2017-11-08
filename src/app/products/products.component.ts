@@ -15,30 +15,21 @@ export class ProductsComponent implements OnInit {
   products: Array<Product>;
   currentUser: UserInfo;
 
-  constructor(private sessionSVC: SessionService, private productservice: ProductService) { }
+  constructor(private sessionSvc: SessionService, private productservice: ProductService) { }
 
   ngOnInit() {
 
-    debugger;
+    if (this.sessionSvc.userLoginState) {
 
-    if (sessionStorage.currentuser!=undefined) {
+      this.productservice.retrieveProduct(this.sessionSvc.loginUserInfo)
+        .then((products: Array<Product>) => {
 
-      this.currentUser = JSON.parse(sessionStorage.currentuser);
+          this.products = products;
 
-      // if (this.sessionSVC.userLoginState) {
-      if (this.currentUser.status == "success") {
-
-        // this.productservice.retrieveProduct(this.sessionSVC.loginUserInfo)
-        this.productservice.retrieveProduct(this.currentUser)
-          .then((products: Array<Product>) => {
-
-            this.products = products;
-
-          }).catch((errorMsg: string) => {
-            //TODO: show error message popup
-            alert(errorMsg);
-          });
-      }
+        }).catch((errorMsg: string) => {
+          //TODO: show error message popup
+          alert(errorMsg);
+        });
     }
   }
 }

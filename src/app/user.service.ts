@@ -12,7 +12,6 @@ export class UserService {
   login(username: string, password: string): Promise<UserInfo> {
 
     return new Promise((resolve, reject) => {
-debugger;
       this.http
         .post("https://pwcfrontendtest.azurewebsites.net/login", { username: username, psd: password })
         .subscribe(
@@ -21,10 +20,9 @@ debugger;
           userInfo.status = data.json().status;
           userInfo.token = data.json().token;
           
-
           if (userInfo.status == "success") {
             resolve(userInfo);
-            sessionStorage.setItem('currentuser',JSON.stringify(userInfo));
+            //sessionStorage.setItem('currentuser',JSON.stringify(userInfo));
           }
           else {
             reject("Username or password is incorrect");
