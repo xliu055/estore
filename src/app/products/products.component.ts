@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SessionService } from '../session.service';
 import { ProductService } from '../product.service';
-import { Product } from '../../models/productlist';
+import { Product } from '../../models/product';
 import { UserInfo } from '../../models/userinfo';
 
 
