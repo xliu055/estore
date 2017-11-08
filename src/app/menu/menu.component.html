@@ -14,7 +14,8 @@
 </div>
 
 <div class="navbar-buttons">
-  <a routerLink="/login" class="btn btn-sm btn-primary">Login</a>
+  <a routerLink="/login" *ngIf="!loginStatus" class="btn btn-sm btn-primary">Login</a>
+  <a routerLink="/login" *ngIf="loginStatus" class="btn btn-sm btn-primary">Logout</a>
   <a routerLink="/login" class="btn btn-sm btn-primary">Sign up</a>
   <a routerLink="/login" class="btn btn-sm btn-primary">3 Items - $300</a>
 </div>
