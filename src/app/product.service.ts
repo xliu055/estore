@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import Promise from 'bluebird';
 import { UserInfo } from '../models/userinfo';
 import { Http, Headers, RequestOptions } from '@angular/http'
-import { Product } from '../models/productlist';
+import { Product } from '../models/product';
 
 @Injectable()
 export class ProductService {

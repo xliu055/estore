@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http'
-import { FormsModule }   from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 
 
@@ -14,11 +14,13 @@ import { LoginComponent } from './login/login.component';
 import { MenuComponent } from './menu/menu.component';
 import { ProductsComponent } from './products/products.component';
 import { FooterComponent } from './footer/footer.component';
+import { PricePipe } from './price.pipe';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'products/:category',      component: ProductsComponent },
-  { path: '',
+  { path: 'products/:category', component: ProductsComponent },
+  {
+    path: '',
     redirectTo: '/products',
     pathMatch: 'full'
   },
@@ -32,7 +34,8 @@ const appRoutes: Routes = [
     LoginComponent,
     MenuComponent,
     ProductsComponent,
-    FooterComponent
+    FooterComponent,
+    PricePipe
   ],
   imports: [
     BrowserModule,
@@ -41,10 +44,10 @@ const appRoutes: Routes = [
     RouterModule.forRoot(
       appRoutes
     )
-    
+
   ],
   providers: [UserService, SessionService, ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
- }
+}

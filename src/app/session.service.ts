@@ -9,19 +9,15 @@ export class SessionService {
   sessionContext: { [sessionKey: string]: any } = {};
 
   get userLoginState(): boolean {
-    return this.sessionContext["UserLoginState"] as boolean;
+    if(!sessionStorage["LoginUserInfo"]) return false;
+    return  JSON.parse(sessionStorage["LoginUserInfo"]) != null;
   }
-
-  set userLoginState(value: boolean) {
-    this.sessionContext["UserLoginState"] = value;
-  }
-
 
   get loginUserInfo(): UserInfo {
-    return this.sessionContext["LoginUserInfo"] as UserInfo;
+    return JSON.parse(sessionStorage["LoginUserInfo"]) as UserInfo
   }
 
   set loginUserInfo(value: UserInfo) {
-    this.sessionContext["LoginUserInfo"] = value;
+    sessionStorage.setItem("LoginUserInfo", JSON.stringify(value));
   }
 }

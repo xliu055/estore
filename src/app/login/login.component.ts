@@ -19,16 +19,13 @@ export class LoginComponent implements OnInit {
               private sessionSvc: SessionService) { }
 
   ngOnInit() {
+    this.sessionSvc.loginUserInfo = null;
   }
 
   doLogin(form: NgForm): void {
     this.userSvc.login(form.value.username, form.value.password)
       .then((userInfo: UserInfo) => {
-
-        //use localstorge
-        // this.sessionSvc.userLoginState = true;
-        // this.sessionSvc.loginUserInfo = userInfo;
-
+        this.sessionSvc.loginUserInfo = userInfo;
         this.router.navigate(['products', 'apple']);
       }).catch((errorMsg: string) => {
         //TODO: show error message popup

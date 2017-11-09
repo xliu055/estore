@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
+import { SessionService } from '../session.service';
 
 class MenuItem {
   displayName: string;
@@ -15,9 +16,8 @@ export class MenuComponent implements OnInit {
 
   menuItems: Array<MenuItem>;
   activeItem: string = "Menu";
-  loginStatus: boolean = false;
 
-  constructor(private route: Router) {
+  constructor(private route: Router, public sessionSvc: SessionService) {
     this.menuItems = [
       { displayName: "Home", url: "/products" },
       { displayName: "Account", url: "/account" },
@@ -28,10 +28,7 @@ export class MenuComponent implements OnInit {
   }
 
   ngOnInit() {
-
-    if (sessionStorage.currentuser != undefined) {
-      this.loginStatus = true;
-    }
+    
     this.route.events.subscribe(e => {
       if (e instanceof NavigationEnd) {
         let findResult = this.menuItems.find(m => m.url === e.url)
