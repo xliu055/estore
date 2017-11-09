@@ -27,8 +27,10 @@ export class MenuComponent implements OnInit {
     ];
   }
 
-  ngOnInit() {
-    
+  Logout(){
+    this.sessionSvc.loginUserInfo=null;
+  }
+  ngOnInit() {    
     this.route.events.subscribe(e => {
       if (e instanceof NavigationEnd) {
         let findResult = this.menuItems.find(m => m.url === e.url)

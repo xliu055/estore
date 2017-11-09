@@ -15,10 +15,11 @@
 
 <div class="navbar-buttons">
   <a routerLink="/login" *ngIf="!sessionSvc.userLoginState" class="btn btn-sm btn-primary">Login</a>
-  <a routerLink="/login" *ngIf="sessionSvc.userLoginState" class="btn btn-sm btn-primary">Logout</a>
+  <a (click)="Logout()" *ngIf="sessionSvc.userLoginState" class="btn btn-sm btn-primary">Logout</a>
   <a routerLink="/login" class="btn btn-sm btn-primary">Sign up</a>
-  <a routerLink="/login" class="btn btn-sm btn-primary">3 Items - $300</a>
+  <a data-toggle="modal" data-target="#shoppingcart" class="btn btn-sm btn-primary">0 Items - $0</a>
 </div>
+
 
 <!-- Collect the nav links, forms, and other content for toggling -->
 <div class="navbar-collapse hidden-xs hidden-sm">
@@ -28,4 +29,44 @@
       <a [routerLink]="menuItem.url">{{menuItem.displayName}}</a>
     </li>
   </ul>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="shoppingcart" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Shopping Cart</h4>
+      </div>
+      <div class="modal-body">
+        <table class="table" *ngIf="sessionSvc.ShoppingCartStatus">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Quantity</th>
+              <th>Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let shoppingcartproduct of sessionSvc.ShoppingCart">
+              <td>
+                {{shoppingcartproduct.product.name}}
+              </td>
+              <td>
+                {{shoppingcartproduct.quantity}}
+              </td>
+              <td>
+                {{shoppingcartproduct.price}}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
 </div>
