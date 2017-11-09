@@ -3,6 +3,7 @@ import { SessionService } from '../session.service';
 import { ProductService } from '../product.service';
 import { Product } from '../../models/product';
 import { UserInfo } from '../../models/userinfo';
+import { ShoppingCartProduct } from "../../models/shoppingcart";
 
 
 @Component({
@@ -14,6 +15,7 @@ export class ProductsComponent implements OnInit {
 
   products: Array<Product>;
   currentUser: UserInfo;
+
 
   constructor(private sessionSvc: SessionService, private productservice: ProductService) { }
 
@@ -30,6 +32,45 @@ export class ProductsComponent implements OnInit {
           //TODO: show error message popup
           alert(errorMsg);
         });
+    }
+  }
+
+  AddtoShoppingCart(product: Product) {
+
+    let shoppingcart=new Array<ShoppingCartProduct>();
+    let productadded=new ShoppingCartProduct();
+
+    debugger;
+
+    if (this.sessionSvc.ShoppingCartStatus) {
+      let productIndex = this.sessionSvc.ShoppingCart.findIndex(item => item.product.name == product.name);
+
+      if (productIndex==0) {
+        debugger;
+        this.sessionSvc.ShoppingCart[productIndex].quantity= this.sessionSvc.ShoppingCart[productIndex].quantity + 1;
+        // this.sessionSvc.ShoppingCart
+      }
+      else{
+        productadded = {
+          'product': product,
+          'quantity': 1,
+          'price': product.price
+        }
+  
+        shoppingcart.push(productadded);
+        this.sessionSvc.ShoppingCart = shoppingcart;
+      
+      }
+    }
+    else {
+      productadded = {
+        'product': product,
+        'quantity': 1,
+        'price': product.price
+      }
+
+      shoppingcart.push(productadded);
+      this.sessionSvc.ShoppingCart = shoppingcart;
     }
   }
 }
