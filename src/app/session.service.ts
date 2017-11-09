@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { UserInfo } from '../models/userinfo';
-import { ShoppingCartProduct } from "../models/shoppingcart";
+import { ShoppingCart } from "../models/shoppingcart";
 import { Product } from "../models/product";
 
 @Injectable()
@@ -23,16 +23,11 @@ export class SessionService {
     sessionStorage.setItem("LoginUserInfo", JSON.stringify(value));
   }
 
-  get ShoppingCartStatus():boolean{
-    if (!sessionStorage["ShoppingCart"]) return false;
-    return JSON.parse(sessionStorage["ShoppingCart"]) != null;
+  get ShoppingCart(): ShoppingCart{
+    return ShoppingCart.deserialize(sessionStorage["ShoppingCart"]);
   }
 
-  get ShoppingCart(): Array<ShoppingCartProduct>{
-    return JSON.parse(sessionStorage["ShoppingCart"]) as Array<ShoppingCartProduct>;
-  }
-
-  set ShoppingCart(value: Array<ShoppingCartProduct>) {
-      sessionStorage.setItem("ShoppingCart", JSON.stringify(value));
+  set ShoppingCart(value: ShoppingCart) {
+      sessionStorage.setItem("ShoppingCart", ShoppingCart.serialize(value));
   }
 }

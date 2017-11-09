@@ -15,6 +15,8 @@ import { MenuComponent } from './menu/menu.component';
 import { ProductsComponent } from './products/products.component';
 import { FooterComponent } from './footer/footer.component';
 import { PricePipe } from './price.pipe';
+import { ScmdPipe } from './scmd.pipe';
+import { ShoppingCartService } from './shopping-cart.service';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -35,7 +37,8 @@ const appRoutes: Routes = [
     MenuComponent,
     ProductsComponent,
     FooterComponent,
-    PricePipe
+    PricePipe,
+    ScmdPipe
   ],
   imports: [
     BrowserModule,
@@ -46,7 +49,7 @@ const appRoutes: Routes = [
     )
 
   ],
-  providers: [UserService, SessionService, ProductService],
+  providers: [UserService, SessionService, ProductService, ShoppingCartService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
