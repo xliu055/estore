@@ -3,8 +3,7 @@ import { SessionService } from '../session.service';
 import { ProductService } from '../product.service';
 import { Product } from '../../models/product';
 import { UserInfo } from '../../models/userinfo';
-import { ShoppingCartProduct } from "../../models/shoppingcart";
-
+import { ShoppingCartService } from '../shopping-cart.service';
 
 @Component({
   selector: 'app-products',
@@ -17,7 +16,9 @@ export class ProductsComponent implements OnInit {
   currentUser: UserInfo;
 
 
-  constructor(private sessionSvc: SessionService, private productservice: ProductService) { }
+  constructor(private sessionSvc: SessionService,
+    private productservice: ProductService,
+    private shoppingCartSvc: ShoppingCartService) { }
 
   ngOnInit() {
 
@@ -35,42 +36,7 @@ export class ProductsComponent implements OnInit {
     }
   }
 
-  AddtoShoppingCart(product: Product) {
-
-    let shoppingcart=new Array<ShoppingCartProduct>();
-    let productadded=new ShoppingCartProduct();
-
-    debugger;
-
-    if (this.sessionSvc.ShoppingCartStatus) {
-      let productIndex = this.sessionSvc.ShoppingCart.findIndex(item => item.product.name == product.name);
-
-      if (productIndex==0) {
-        debugger;
-        this.sessionSvc.ShoppingCart[productIndex].quantity= this.sessionSvc.ShoppingCart[productIndex].quantity + 1;
-        // this.sessionSvc.ShoppingCart
-      }
-      else{
-        productadded = {
-          'product': product,
-          'quantity': 1,
-          'price': product.price
-        }
-  
-        shoppingcart.push(productadded);
-        this.sessionSvc.ShoppingCart = shoppingcart;
-      
-      }
-    }
-    else {
-      productadded = {
-        'product': product,
-        'quantity': 1,
-        'price': product.price
-      }
-
-      shoppingcart.push(productadded);
-      this.sessionSvc.ShoppingCart = shoppingcart;
-    }
+  addToCart(product: Product) {
+    this.shoppingCartSvc.addToCart(product);
   }
 }

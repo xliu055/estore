@@ -23,6 +23,7 @@ export class LoginComponent implements OnInit {
   }
 
   doLogin(form: NgForm): void {
+    if(!form.valid) return;
     this.userSvc.login(form.value.username, form.value.password)
       .then((userInfo: UserInfo) => {
         this.sessionSvc.loginUserInfo = userInfo;

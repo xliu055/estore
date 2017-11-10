@@ -17,7 +17,7 @@
   <a routerLink="/login" *ngIf="!sessionSvc.userLoginState" class="btn btn-sm btn-primary">Login</a>
   <a (click)="Logout()" *ngIf="sessionSvc.userLoginState" class="btn btn-sm btn-primary">Logout</a>
   <a routerLink="/login" class="btn btn-sm btn-primary">Sign up</a>
-  <a data-toggle="modal" data-target="#shoppingcart" class="btn btn-sm btn-primary">0 Items - $0</a>
+  <a data-toggle="modal" data-target="#shoppingcart" class="btn btn-sm btn-primary">{{sessionSvc.ShoppingCart | scmd}}</a>
 </div>
 
 
@@ -41,7 +41,7 @@
         <h4 class="modal-title">Shopping Cart</h4>
       </div>
       <div class="modal-body">
-        <table class="table" *ngIf="sessionSvc.ShoppingCartStatus">
+        <table class="table">
           <thead>
             <tr>
               <th>Name</th>
@@ -50,16 +50,20 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let shoppingcartproduct of sessionSvc.ShoppingCart">
+            <tr *ngFor="let unit of sessionSvc.ShoppingCart.items">
               <td>
-                {{shoppingcartproduct.product.name}}
+                {{unit.product.name}}
               </td>
               <td>
-                {{shoppingcartproduct.quantity}}
+                {{unit.quantity}}
               </td>
               <td>
-                {{shoppingcartproduct.price}}
+                {{unit.price | price:'$'}}
               </td>
+            </tr>
+            <tr>
+              <td colspan="2">Total</td>
+              <td>{{sessionSvc.ShoppingCart.totalPrice | price:'$'}}</td>
             </tr>
           </tbody>
         </table>
