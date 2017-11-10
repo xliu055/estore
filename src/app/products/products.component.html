@@ -1,7 +1,7 @@
 <div class="page-products">
   <div class="products-center row">
     <div class="products-img col-xs-12 col-sm-12 col-md-12 col-lg-12">
-      <img src="../../assets/rs-3.jpg" class="img-responsive" alt="">
+      <img src="../../assets/back.png" class="img-responsive" alt="">
     </div>
     <div class="container">
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -15,7 +15,10 @@
         <div class="products-bor">
         </div>
         <div class="products-list">
-          <div class="row">
+          <div *ngIf="!this.sessionSvc.userLoginState" class="NoLogin">
+          Please Login to view the product list.
+          </div>
+          <div class="row" *ngIf="this.sessionSvc.userLoginState">
             <div *ngFor="let product of products;" class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
               <div class="item">
                 <div class="item-img">

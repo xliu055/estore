@@ -16,7 +16,7 @@
 <div class="navbar-buttons">
   <a routerLink="/login" *ngIf="!sessionSvc.userLoginState" class="btn btn-sm btn-primary">Login</a>
   <a (click)="Logout()" *ngIf="sessionSvc.userLoginState" class="btn btn-sm btn-primary">Logout</a>
-  <a routerLink="/login" class="btn btn-sm btn-primary">Sign up</a>
+  <a routerLink="/signup" class="btn btn-sm btn-primary">Sign up</a>
   <a data-toggle="modal" data-target="#shoppingcart" class="btn btn-sm btn-primary">{{sessionSvc.ShoppingCart | scmd}}</a>
 </div>
 
@@ -38,38 +38,53 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Shopping Cart</h4>
+        <h4 class="modal-title ">Shopping Cart</h4>
       </div>
       <div class="modal-body">
-        <table class="table">
+        <table class="table table-striped">
           <thead>
             <tr>
               <th>Name</th>
               <th>Quantity</th>
               <th>Price</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let unit of sessionSvc.ShoppingCart.items">
-              <td>
+              <td class="color">
                 {{unit.product.name}}
               </td>
-              <td>
-                {{unit.quantity}}
+              <td class="trquantity">
+                <div class="quantity">
+                  <div class="input-group spinner">
+                    <input type="text" class="form-control" value="{{unit.quantity}}">
+                    <div class="input-group-btn-vertical">
+                      <button class="btn btn-default" type="button" (click)="addToCart(unit.product)"><i class="fa fa-caret-up"></i></button>
+                      <button class="btn btn-default" type="button" (click)="DeletefromShoppingCart(unit.product)"><i class="fa fa-caret-down"></i></button>
+                    </div>
+                  </div>
+                </div>
               </td>
               <td>
                 {{unit.price | price:'$'}}
               </td>
+              <td>
+                <button type="button" class="close" aria-label="Close" (click)="DeletefromShoppingCart(unit.product)">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+              </td>
             </tr>
             <tr>
-              <td colspan="2">Total</td>
-              <td>{{sessionSvc.ShoppingCart.totalPrice | price:'$'}}</td>
+              <td></td>
+              <td>Total</td>
+              <td colspan="2">{{sessionSvc.ShoppingCart.totalPrice | price:'$'}}</td>
             </tr>
           </tbody>
         </table>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Continue Shopping</button>
       </div>
     </div>
   </div>

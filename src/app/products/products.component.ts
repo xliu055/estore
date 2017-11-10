@@ -34,9 +34,11 @@ export class ProductsComponent implements OnInit {
           alert(errorMsg);
         });
     }
+    
   }
 
   addToCart(product: Product) {
     this.shoppingCartSvc.addToCart(product);
+    alert("Add Successfully,please view or delete in Shopping Cart.")
   }
 }
