@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { SessionService } from '../session.service';
+import { Product } from "../../models/product";
+import { ShoppingCartService } from "../shopping-cart.service";
 
 class MenuItem {
   displayName: string;
@@ -17,18 +19,21 @@ export class MenuComponent implements OnInit {
   menuItems: Array<MenuItem>;
   activeItem: string = "Menu";
 
-  constructor(private route: Router, public sessionSvc: SessionService) {
+  
+
+  constructor(private route: Router, public sessionSvc: SessionService,private shoppingCartSvc: ShoppingCartService ) {
     this.menuItems = [
       { displayName: "Home", url: "/products" },
       { displayName: "Account", url: "/account" },
       { displayName: "Pages", url: "/pages" },
-      { displayName: "Computers", url: "/products/computers" },
+      { displayName: "Computers", url: "/computers" },
       { displayName: "Contact", url: "/contact" }
     ];
   }
 
   Logout(){
     this.sessionSvc.loginUserInfo=null;
+    this.shoppingCartSvc.removeAll();
   }
   ngOnInit() {    
     this.route.events.subscribe(e => {
@@ -37,5 +42,16 @@ export class MenuComponent implements OnInit {
         this.activeItem = findResult ? findResult.displayName : "Menu";
       }
     });
+  }
+
+  addToCart(product: Product) {
+    debugger;
+    this.shoppingCartSvc.addToCart(product);
+  }
+
+  DeletefromShoppingCart(product:Product){
+    debugger;
+    this.shoppingCartSvc.removeFormCart(product);
+
   }
 }

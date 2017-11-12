@@ -13,4 +13,15 @@ export class ShoppingCartService {
     this.sessionSvc.ShoppingCart = obj;
   }
 
+  removeFormCart(product:Product){
+    let obj=this.sessionSvc.ShoppingCart;
+    obj.removeFromCart(product);
+    this.sessionSvc.ShoppingCart=obj;
+  }
+
+  removeAll(){
+    let obj=this.sessionSvc.ShoppingCart;
+    obj.removeAll();
+    this.sessionSvc.ShoppingCart = obj;
+  }
 }

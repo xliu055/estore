@@ -17,16 +17,17 @@ import { FooterComponent } from './footer/footer.component';
 import { PricePipe } from './price.pipe';
 import { ScmdPipe } from './scmd.pipe';
 import { ShoppingCartService } from './shopping-cart.service';
+import { BlankpageComponent } from './blankpage/blankpage.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'products/:category', component: ProductsComponent },
+  { path: 'products', component: ProductsComponent },
   {
     path: '',
     redirectTo: '/products',
     pathMatch: 'full'
   },
-  { path: '**', component: ProductsComponent }
+  { path: '**', component: BlankpageComponent }
 ];
 
 
@@ -38,7 +39,8 @@ const appRoutes: Routes = [
     ProductsComponent,
     FooterComponent,
     PricePipe,
-    ScmdPipe
+    ScmdPipe,
+    BlankpageComponent
   ],
   imports: [
     BrowserModule,

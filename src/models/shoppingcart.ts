@@ -35,10 +35,10 @@ export class ShoppingCart {
 
     static deserialize(str: string): ShoppingCart {
         let obj = new ShoppingCart();
-        if(!str) return obj;
-        
+        if (!str) return obj;
+
         let o = JSON.parse(str);
-        for(let i of o) {
+        for (let i of o) {
             obj.items.push(new ShoppingCartUnit(i.product, i.quantity));
         }
 
@@ -83,7 +83,12 @@ export class ShoppingCart {
         if (unit.quantity > 1) {
             unit.quantity--;
         } else {
-            this.items.slice(this.items.indexOf(unit), 1);
+            console.log(this.items.indexOf(unit));
+            this.items.splice(this.items.indexOf(unit), 1);
         }
+    }
+
+    removeAll(): void {
+        this.items.splice(0, this.items.length);
     }
 }
