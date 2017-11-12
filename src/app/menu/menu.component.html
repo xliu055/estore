@@ -6,10 +6,13 @@
 <div class="dropdown visible-xs visible-sm col-sm-6">
   <button class="btn btn-default dropdown-toggle" type="button" id="menu-dropdown" data-toggle="dropdown" aria-haspopup="true"
     aria-expanded="true">
-      {{ activeItem }} <span class="caret"></span>
+    {{ activeItem }}
+    <span class="caret"></span>
   </button>
   <ul class="dropdown-menu" aria-labelledby="menu-dropdown">
-    <li *ngFor="let menuItem of menuItems"><a [routerLink]="menuItem.url">{{menuItem.displayName}}</a></li>
+    <li *ngFor="let menuItem of menuItems">
+      <a [routerLink]="menuItem.url">{{menuItem.displayName}}</a>
+    </li>
   </ul>
 </div>
 
@@ -60,8 +63,12 @@
                   <div class="input-group spinner">
                     <input type="text" class="form-control" value="{{unit.quantity}}">
                     <div class="input-group-btn-vertical">
-                      <button class="btn btn-default" type="button" (click)="addToCart(unit.product)"><i class="fa fa-caret-up"></i></button>
-                      <button class="btn btn-default" type="button" (click)="DeletefromShoppingCart(unit.product)"><i class="fa fa-caret-down"></i></button>
+                      <button class="btn btn-default" type="button" (click)="addToCart(unit.product)">
+                        <i class="fa fa-caret-up"></i>
+                      </button>
+                      <button class="btn btn-default" type="button" (click)="deleteFromCart(unit.product)">
+                        <i class="fa fa-caret-down"></i>
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -71,8 +78,8 @@
               </td>
               <td>
                 <button type="button" class="close" aria-label="Close" (click)="DeletefromShoppingCart(unit.product)">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
+                  <span aria-hidden="true">&times;</span>
+                </button>
               </td>
             </tr>
             <tr>

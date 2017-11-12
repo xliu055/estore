@@ -39,6 +39,6 @@ export class ProductsComponent implements OnInit {
 
   addToCart(product: Product) {
     this.shoppingCartSvc.addToCart(product);
-    alert("Add Successfully,please view or delete in Shopping Cart.")
+    //alert("Add Successfully, please view or delete in Shopping Cart.")
   }
 }

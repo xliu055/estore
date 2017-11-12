@@ -1,10 +1,10 @@
 <div class="page-products">
-  <div class="products-center row">
-    <div class="products-img col-xs-12 col-sm-12 col-md-12 col-lg-12">
+  <div class="products-center">
+    <div class="products-img">
       <img src="../../assets/back.png" class="img-responsive" alt="">
     </div>
     <div class="container">
-      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <div>
         <h3>
           It <span class="color">'</span> Lorem ipsum <span class="color">dolor</span> sit amet consectetur
         </h3>
@@ -16,7 +16,7 @@
         </div>
         <div class="products-list">
           <div *ngIf="!this.sessionSvc.userLoginState" class="NoLogin">
-          Please Login to view the product list.
+          Please <a routerLink="/login">Login</a> to view the product list.
           </div>
           <div class="row" *ngIf="this.sessionSvc.userLoginState">
             <div *ngFor="let product of products;" class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
@@ -36,7 +36,7 @@
                     {{product.price | price:'$'}}
                   </div>
                   <div class="item-shoppingcart">
-                    <a (click)="addToCart(product)" class="btn btn-danger btn-sm">Add to cart</a>
+                    <a appBtnAddCart (click)="addToCart(product)" class="btn btn-danger btn-sm">Add to cart</a>
                   </div>
                 </div>
               </div>
