@@ -45,12 +45,10 @@ export class MenuComponent implements OnInit {
   }
 
   addToCart(product: Product) {
-    debugger;
     this.shoppingCartSvc.addToCart(product);
   }
 
-  DeletefromShoppingCart(product:Product){
-    debugger;
+  deleteFromCart(product:Product){
     this.shoppingCartSvc.removeFormCart(product);
 
   }

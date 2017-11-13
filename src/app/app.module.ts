@@ -18,6 +18,7 @@ import { PricePipe } from './price.pipe';
 import { ScmdPipe } from './scmd.pipe';
 import { ShoppingCartService } from './shopping-cart.service';
 import { BlankpageComponent } from './blankpage/blankpage.component';
+import { BtnAddCartDirective } from './btn-add-cart.directive';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -40,7 +41,8 @@ const appRoutes: Routes = [
     FooterComponent,
     PricePipe,
     ScmdPipe,
-    BlankpageComponent
+    BlankpageComponent,
+    BtnAddCartDirective
   ],
   imports: [
     BrowserModule,

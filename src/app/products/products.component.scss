@@ -44,6 +44,15 @@
             color: red;
         }
 
+        .adding-to-cart {
+            width: 30px;
+            border-radius: 30px;
+            position: relative;
+            text-indent: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
         .item{
             max-width: 250px;
             max-height: 320px;
