@@ -48,7 +48,7 @@ export class MenuComponent implements OnInit {
     this.shoppingCartSvc.addToCart(product);
   }
 
-  deleteFromCart(product:Product){
+  DeletefromShoppingCart(product:Product){
     this.shoppingCartSvc.removeFormCart(product);
 
   }
